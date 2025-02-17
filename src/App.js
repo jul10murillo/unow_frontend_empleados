@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Login from './components/Login';
 import Register from './components/Register';
 import EmployeeList from './components/EmployeeList';
@@ -28,6 +30,7 @@ function App() {
           <Route path="/employees/show/:id" element={<PrivateRoute element={EmployeeShow} />} />
           <Route path="/employees/update/:id" element={<PrivateRoute element={EmployeeForm} />} />
         </Routes>
+        <ToastContainer /> 
       </div>
     </Router>
   );

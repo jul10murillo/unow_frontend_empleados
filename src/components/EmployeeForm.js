@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import api from '../services/api';
 
 const EmployeeForm = () => {
@@ -40,8 +41,14 @@ const EmployeeForm = () => {
       } else {
         await api.post('/employees/create', employeeData);
       }
+      toast.success('Empleado registrado con exito', {
+        position: 'top-right',
+      });
       navigate('/employees/list');
     } catch (error) {
+      toast.error('Error al registrar empleado.', {
+        position: 'top-right',
+      });
       console.error('Error saving employee:', error);
     }
   };

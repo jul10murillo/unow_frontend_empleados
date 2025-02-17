@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../services/api';
+import { toast } from 'react-toastify';
 import '../App.css'; // Asegúrate de importar el archivo CSS
 
 const Register = () => {
@@ -12,8 +13,14 @@ const Register = () => {
     e.preventDefault();
     try {
       await api.post('/register', { email, password });
+      toast.success('Registro con éxito', {
+        position: 'top-right',
+      });
       navigate('/login');
     } catch (error) {
+      toast.error('Registro fallido, intente nuevamente', {
+        position: 'top-right',
+      });
       console.error('Error registering:', error);
     }
   };
