@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import api from '../services/api';
 import '../App.css'; // Asegúrate de importar el archivo CSS
 
@@ -41,6 +41,10 @@ const Login = () => {
         />
         <button type="submit" className="login-button">Login</button>
       </form>
+      <div className="register-link-container">
+        <p>Don't have an account?</p>
+        <Link to="/register" className="register-link">Register</Link>
+      </div>
     </div>
   );
 };
