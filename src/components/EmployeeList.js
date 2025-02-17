@@ -41,21 +41,21 @@ const EmployeeList = () => {
   return (
     <div className="employee-list-container">
       <div className="header">
-        <h1>Employee List</h1>
-        <button onClick={handleLogout} className="logout-button">Logout</button>
+        <h1>Lista de Empleados</h1>
+        <button onClick={handleLogout} className="logout-button">Cerrar Sesión</button>
       </div>
-      <Link to="/employees/create" className="add-employee-link">Add Employee</Link>
+      <Link to="/employees/create" className="add-employee-link">Agregar Empleado</Link>
       <ul className="employee-list">
         {Array.isArray(employees) && employees.map((employee) => (
           <li key={employee.id} className="employee-item">
             <div className="employee-info">
-              <span>{employee.firstName} {employee.lastName}</span>
-              <span>{employee.position}</span>
+              <p><strong>Nombre:</strong> {employee.firstName} {employee.lastName}</p>
+              <p><strong>Cargo:</strong> {employee.position}</p>
             </div>
             <div className="employee-actions">
-              <Link to={`/employees/show/${employee.id}`} className="action-button show-button">Show</Link>
-              <Link to={`/employees/update/${employee.id}`} className="action-button edit-button">Edit</Link>
-              <button onClick={() => handleDelete(employee.id)} className="action-button delete-button">Delete</button>
+              <Link to={`/employees/show/${employee.id}`} className="action-button show-button">Ver</Link>
+              <Link to={`/employees/update/${employee.id}`} className="action-button edit-button">Editar</Link>
+              <button onClick={() => handleDelete(employee.id)} className="action-button delete-button">Eliminar</button>
             </div>
           </li>
         ))}

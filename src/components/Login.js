@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import api from '../services/api';
+import { toast } from 'react-toastify';
 import '../App.css'; // Asegúrate de importar el archivo CSS
 
 const Login = () => {
@@ -15,6 +16,9 @@ const Login = () => {
       localStorage.setItem('token', response.data.token);
       navigate('/employees/list');
     } catch (error) {
+      toast.error('Credenciales incorrectas', {
+        position: 'top-right',
+      })
       console.error('Error logging in:', error);
     }
   };
