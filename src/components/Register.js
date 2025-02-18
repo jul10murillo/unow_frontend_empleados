@@ -4,11 +4,13 @@ import api from '../services/api';
 import { toast } from 'react-toastify';
 import '../App.css'; // Asegúrate de importar el archivo CSS
 
+// Componente de registro
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+  // Función para registrar un nuevo usuario
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -25,6 +27,7 @@ const Register = () => {
     }
   };
 
+  // Renderizar el formulario de registro
   return (
     <div className="register-container">
       <h1 className="register-title">Register</h1>

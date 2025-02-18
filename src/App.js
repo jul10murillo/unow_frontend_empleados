@@ -9,14 +9,17 @@ import EmployeeForm from './components/EmployeeForm';
 import EmployeeShow from './components/EmployeeShow';
 import './App.css';
 
+// Función para verificar si el usuario esta autenticado
 const isAuthenticated = () => {
   return !!localStorage.getItem('token');
 };
 
+// Componente para rutas privadas
 const PrivateRoute = ({ element: Component, ...rest }) => {
   return isAuthenticated() ? <Component {...rest} /> : <Navigate to="/login" />;
 };
 
+// Componente principal
 function App() {
   return (
     <Router>

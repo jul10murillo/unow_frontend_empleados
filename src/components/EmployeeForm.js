@@ -14,15 +14,17 @@ const EmployeeForm = () => {
   const { id } = useParams();
 
   useEffect(() => {
+    // Función para obtener las posiciones
     const fetchPositions = async () => {
       try {
         const response = await api.get('/external/positions');
-        setPositions(response.data.positions); // Asegúrate de acceder a la propiedad correcta
+        setPositions(response.data.positions);
       } catch (error) {
         console.error('Error fetching positions:', error);
       }
     };
 
+    // Función para obtener el empleado
     const fetchEmployee = async () => {
       if (id) {
         try {
@@ -42,6 +44,7 @@ const EmployeeForm = () => {
     fetchEmployee();
   }, [id]);
 
+  // Función para guardar el empleado
   const handleSubmit = async (e) => {
     e.preventDefault();
     const employeeData = { firstName, lastName, position, dateOfBirth, email };
@@ -57,10 +60,12 @@ const EmployeeForm = () => {
     }
   };
 
+  // Función para volver a la lista
   const handleGoBack = () => {
     navigate('/employees/list');
   };
 
+  // Renderizar el formulario
   return (
     <div className="employee-form-container">
       <h1 className="form-title">{id ? 'Editar Empleado' : 'Crear Empleado'}</h1>
@@ -89,7 +94,7 @@ const EmployeeForm = () => {
             <option value="" disabled>SELECCIONA UN PUESTO</option>
             {positions.map((pos, index) => (
               <option key={index} value={pos}>
-                {pos.toUpperCase()} {/* Convierte el texto a mayúsculas */}
+                {pos.toUpperCase()}
               </option>
             ))}
           </select>

@@ -1,36 +1,35 @@
 import axios from 'axios';
 
+// Configuración de la instancia de Axios
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_BASE_URL, // URL base de tu API
+  baseURL: process.env.REACT_APP_API_BASE_URL,
 });
 
-// Interceptor para agregar el token a cada solicitud
-api.interceptors.request.use(
-    (config) => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
-      return config;
-    },
-    (error) => {
-      return Promise.reject(error);
-    }
-  );
+// Configuración de los interceptores
+    api.interceptors.request.use(
+        (config) => {
+            const token = localStorage.getItem('token');
+            if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+            }
+            return config;
+        },
+        (error) => {
+            return Promise.reject(error);
+        }
+    );
+
+    api.interceptors.response.use(
+        (response) => {
+            return response;
+        },
+        (error) => {
+            if (error.response && error.response.status === 401) {
+            localStorage.removeItem('token');
+            window.location.href = '/login';
+            }
+            return Promise.reject(error);
+        }
+    );
   
-  // Interceptor para manejar la respuesta y verificar la expiración del token
-  api.interceptors.response.use(
-    (response) => {
-      return response;
-    },
-    (error) => {
-      if (error.response && error.response.status === 401) {
-        // Si el token ha expirado, elimina el token y redirige a la página de inicio de sesión
-        localStorage.removeItem('token');
-        window.location.href = '/login'; // Redirige a la página de inicio de sesión
-      }
-      return Promise.reject(error);
-    }
-  );
-  
-  export default api;
+export default api;

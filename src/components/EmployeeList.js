@@ -3,11 +3,14 @@ import { Link, useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import '../App.css'; // Asegúrate de importar el archivo CSS
 
+// Componente para la lista de empleados
 const EmployeeList = () => {
   const [employees, setEmployees] = useState([]);
   const navigate = useNavigate();
 
+  // Cargar empleados desde el backend
   useEffect(() => {
+    // Función para obtener los empleados
     const fetchEmployees = async () => {
       try {
         const response = await api.get('/employees/list');
@@ -24,6 +27,7 @@ const EmployeeList = () => {
     fetchEmployees();
   }, []);
 
+  // Función para eliminar un empleado
   const handleDelete = async (id) => {
     try {
       await api.delete(`/employees/delete/${id}`);
@@ -33,11 +37,13 @@ const EmployeeList = () => {
     }
   };
 
+  // Función para cerrar sesión
   const handleLogout = () => {
     localStorage.removeItem('token');
     navigate('/login');
   };
 
+  // Renderizar la lista de empleados
   return (
     <div className="employee-list-container">
       <div className="header">

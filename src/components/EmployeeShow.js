@@ -3,11 +3,13 @@ import { useParams, useNavigate } from 'react-router-dom';
 import api from '../services/api';
 import '../App.css'; // Asegúrate de importar el archivo CSS
 
+// Componente para mostrar detalles de un empleado
 const EmployeeShow = () => {
   const [employee, setEmployee] = useState(null);
   const { id } = useParams();
   const navigate = useNavigate();
 
+  // Función para obtener el empleado
   useEffect(() => {
     const fetchEmployee = async () => {
       try {
@@ -23,9 +25,10 @@ const EmployeeShow = () => {
   }, [id, navigate]);
 
   if (!employee) {
-    return <div>Loading...</div>;
+    return <div>Cargando...</div>;
   }
 
+  // Renderizar los detalles del empleado
   return (
     <div className="employee-show-container">
       <h1 className="employee-show-title">Employee Details</h1>

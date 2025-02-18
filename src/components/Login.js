@@ -4,11 +4,13 @@ import api from '../services/api';
 import { toast } from 'react-toastify';
 import '../App.css'; // Asegúrate de importar el archivo CSS
 
+// Componente de inicio de sesión
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
+  // Función para iniciar sesión
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -23,6 +25,7 @@ const Login = () => {
     }
   };
 
+  // Renderizar el formulario de inicio de sesión
   return (
     <div className="login-container">
       <h1 className="login-title">Prueba técnica Unow</h1>
