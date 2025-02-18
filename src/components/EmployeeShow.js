@@ -31,11 +31,11 @@ const EmployeeShow = () => {
   // Renderizar los detalles del empleado
   return (
     <div className="employee-show-container">
-      <h1 className="employee-show-title">Employee Details</h1>
+      <h1 className="employee-show-title">Detalle de empleado</h1>
       <div className="employee-show-info">
-        <p><strong>Name:</strong> {employee.firstName} {employee.lastName}</p>
-        <p><strong>Position:</strong> {employee.position}</p>
-        <p><strong>Date of Birth:</strong> {employee.dateOfBirth}</p>
+        <p><strong>Nombre:</strong> {employee.firstName} {employee.lastName}</p>
+        <p><strong>Posición:</strong> {employee.position}</p>
+        <p><strong>Fecha de Nacimiento:</strong> {employee.dateOfBirth}</p>
         <p><strong>Email:</strong> {employee.email}</p>
       </div>
       <button onClick={() => navigate('/employees/list')} className="back-button">Back to List</button>

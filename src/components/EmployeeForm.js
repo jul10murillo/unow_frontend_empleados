@@ -70,6 +70,7 @@ const EmployeeForm = () => {
     <div className="employee-form-container">
       <h1 className="form-title">{id ? 'Editar Empleado' : 'Crear Empleado'}</h1>
       <form onSubmit={handleSubmit}>
+        <label>Nombre</label>
         <input
           type="text"
           value={firstName}
@@ -77,6 +78,7 @@ const EmployeeForm = () => {
           placeholder="Nombre"
           required
         />
+        <label>Apellido</label>
         <input
           type="text"
           value={lastName}
@@ -84,6 +86,7 @@ const EmployeeForm = () => {
           placeholder="Apellido"
           required
         />
+        <label>Puesto</label>
         <div className="custom-select-container">
           <select
             className="custom-select"
@@ -100,12 +103,14 @@ const EmployeeForm = () => {
           </select>
           <div className="custom-select-arrow">&#9660;</div> {/* Flecha personalizada */}
         </div>
+        <label>Fecha de Nacimiento</label>
         <input
           type="date"
           value={dateOfBirth}
           onChange={(e) => setDateOfBirth(e.target.value)}
           required
         />
+        <label>Correo Electrónico</label>
         <input
           type="email"
           value={email}
